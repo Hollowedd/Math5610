@@ -1,0 +1,3 @@
+Some things to know if you want to run this code: 
+1. Do not work with matricies more than  size of 12 unless you want to spend 30 minutes solving them. 
+1. The Start of this  code just creates a random matrix that represents a theoretical traveling salesman problem. 
