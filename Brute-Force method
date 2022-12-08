@@ -1,0 +1,41 @@
+from itertools import permutations
+from matplotlib.lines import VertexSelector
+import numpy as np
+import itertools  
+from timeit import default_timer as timer
+matrixSize = 10
+step = 0
+times = 0 
+
+matrixSize = 13
+
+
+dist = np.random.randint(200,size=(matrixSize,matrixSize))
+for i in range(len(dist)):
+    dist[i][i] = 0
+
+print(dist)
+n = len(dist)
+
+INT_MAX = 9999999
+
+def bruteforcetsp(start):
+ 
+  vertex = []
+  for i in range(n):
+    if i != start:
+      vertex.append(i)
+
+  minpath = INT_MAX
+  nextperm = itertools.permutations(vertex)
+  for i in nextperm:
+    currentLength = 0
+    k = start #sets the start as k
+    for j in i: # add up distance in permutation from start to next 
+      currentLength += dist[k][j]
+      k = j # after adding start to next it sets next to k and goes back in for loop
+  #add final length back to start position 
+    currentLength += dist[k][start]
+    minpath = min(minpath,currentLength )
+
+  return minpath
